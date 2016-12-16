@@ -1,6 +1,8 @@
 rules:
     php.bad_mutator_method_name_for_boolean_property:
         enabled: false
+    php.silenced_error:
+        enabled: false
 exclude_patterns:
     - docs/*
     - tests/*
