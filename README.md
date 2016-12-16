@@ -53,5 +53,11 @@ Yii::$app->phpCache->set('foo', 'bar')
 If you need to execute any PHP bootstrap code before you get a value from a cache, pass a `sergeymakinen\caching\ValueWithBootstrap` instance with the value and a PHP code (which can be multiline of course) as a string to `set()`:
 
 ```php
-Yii::$app->phpCache->set('foo', new sergeymakinen\caching\ValueWithBootstrap('bar', 'Yii::$app->params['fromCache'] = true;'));
+Yii::$app->phpCache->set(
+    'foo',
+    new sergeymakinen\caching\ValueWithBootstrap(
+        'bar',
+        'Yii::$app->params[\'fromCache\'] = true;'
+    )
+);
 ```
