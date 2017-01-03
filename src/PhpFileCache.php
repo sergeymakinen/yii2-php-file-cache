@@ -88,21 +88,16 @@ class PhpFileCache extends FileCache
     private function extractClosureNamespaces(\Closure $closure)
     {
         $function = new \ReflectionFunction($closure);
+        $closureNamespace = null;
+        $closureUses = [];
         if ($function->getFileName() === false || strpos($function->getFileName(), 'eval()\'d code') !== false) {
             return [
-                'namespace' => null,
-                'uses' => [],
+                'namespace' => $closureNamespace,
+                'uses' => $closureUses,
             ];
         }
 
-        $closureNamespace = null;
-        $closureUses = [];
-        $source = implode(array_slice(
-            file($function->getFileName()),
-            0,
-            $function->getEndLine()
-        ));
-        $tokens = token_get_all('<?php ' . $source);
+        $tokens = token_get_all(implode(array_slice(file($function->getFileName()), 0, $function->getEndLine())));
         $state = null;
         $namespace = null;
         $alias = null;
