@@ -75,6 +75,7 @@ return Config::create()
         Finder::create()
             ->ignoreDotFiles(false)
             ->name('.php_cs.dist')
+            ->notPath('stubs/TestClosureInNamespace.php')
             ->in([
                 __DIR__ . '/src',
                 __DIR__ . '/tests',

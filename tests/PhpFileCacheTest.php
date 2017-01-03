@@ -3,6 +3,7 @@
 namespace sergeymakinen\tests\caching;
 
 use sergeymakinen\caching\ValueWithBootstrap;
+use sergeymakinen\tests\caching\stubs\TestClosureInNamespace;
 use sergeymakinen\tests\caching\stubs\TestModel;
 use yii\caching\ExpressionDependency;
 use yii\helpers\FileHelper;
@@ -76,6 +77,76 @@ class PhpFileCacheTest extends TestCase
         $this->assertNull(self::$external);
         $this->assertEquals($value, $cache->get('foo'));
         $this->assertEquals('foobar', self::$external);
+    }
+
+    /**
+     * @dataProvider valuesProvider
+     *
+     * @param mixed $value
+     */
+    public function testSerializeWithBoostrapClosure($value)
+    {
+        $cache = $this->createCache();
+        $this->assertTrue($cache->flush());
+        self::$external = null;
+        $cache->set('foo', new ValueWithBootstrap($value, function () {
+            PhpFileCacheTest::$external = 'foobar';
+        }));
+        $this->assertNull(self::$external);
+        $this->assertEquals($value, $cache->get('foo'));
+        $this->assertEquals('foobar', self::$external);
+    }
+
+    /**
+     * @dataProvider valuesProvider
+     *
+     * @param mixed $value
+     */
+    public function testSerializeWithBoostrapClosureInNamespace($value)
+    {
+        $cache = $this->createCache();
+        $this->assertTrue($cache->flush());
+        self::$external = null;
+        $cache->set('foo', new ValueWithBootstrap($value, TestClosureInNamespace::getClosure()));
+        $this->assertNull(self::$external);
+        $this->assertEquals($value, $cache->get('foo'));
+        $this->assertEquals('foobar', self::$external);
+    }
+
+    public function testExtractClosureNamespaces()
+    {
+        $expected = [
+            'namespace' => 'sergeymakinen\tests\caching',
+            'uses' => [
+                'sergeymakinen\caching\ValueWithBootstrap',
+                'sergeymakinen\tests\caching\stubs\TestClosureInNamespace',
+                'sergeymakinen\tests\caching\stubs\TestModel',
+                'yii\caching\ExpressionDependency',
+                'yii\helpers\FileHelper',
+            ],
+        ];
+        $this->assertEquals($expected, $this->invokeInaccessibleMethod($this->createCache(), 'extractClosureNamespaces', [function () {
+        }]));
+
+        $expected = [
+            'namespace' => 'sergeymakinen\tests\caching\stubs',
+            'uses' => [
+                'Alias' => 'sergeymakinen\tests\caching\PhpFileCacheTest',
+                'yii\helpers\StringHelper',
+                'yii\helpers\ArrayHelper',
+                'yii\helpers\VarDumper',
+                'Alias2' => 'yii\helpers\Html',
+            ],
+        ];
+        $this->assertEquals($expected, $this->invokeInaccessibleMethod($this->createCache(), 'extractClosureNamespaces', [TestClosureInNamespace::getClosure()]));
+
+        /** @var \Closure $dynamicClosure */
+        eval('$dynamicClosure = function () {};');
+        $expected = [
+            'namespace' => null,
+            'uses' => [],
+        ];
+        $this->assertEquals($expected, $this->invokeInaccessibleMethod($this->createCache(), 'extractClosureNamespaces', [$dynamicClosure]));
     }
 
     public function testNotExisting()
