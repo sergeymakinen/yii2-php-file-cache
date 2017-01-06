@@ -17,13 +17,13 @@ The preferred way to install this extension is through [composer](https://getcom
 Either run
 
 ```bash
-composer require "sergeymakinen/yii2-php-file-cache:^1.0"
+composer require "sergeymakinen/yii2-php-file-cache:^2.0"
 ```
 
 or add
 
 ```json
-"sergeymakinen/yii2-php-file-cache": "^1.0"
+"sergeymakinen/yii2-php-file-cache": "^2.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -36,7 +36,7 @@ Set the following Yii 2 configuration parameters:
 [
     'components' => [
         'phpCache' => [
-            'class' => 'sergeymakinen\caching\PhpFileCache',
+            'class' => 'sergeymakinen\yii\phpfilecache\Cache',
         ],
     ],
 ]
@@ -50,10 +50,10 @@ Yii::$app->phpCache->set('foo', 'bar')
 
 ### Caching values with a PHP code
 
-If you need to execute any PHP bootstrap code before you get a value from a cache, pass a `sergeymakinen\caching\ValueWithBootstrap` instance with the value and a PHP code (which can be multiline of course) as a string to `set()`:
+If you need to execute any PHP bootstrap code before you get a value from a cache, pass a `sergeymakinen\yii\phpfilecache\ValueWithBootstrap` instance with the value and a PHP code (which can be multiline of course) as a string to `set()`:
 
 ```php
-use sergeymakinen\caching\ValueWithBootstrap;
+use sergeymakinen\yii\phpfilecache\ValueWithBootstrap;
 
 Yii::$app->phpCache->set(
     'foo',
@@ -67,7 +67,7 @@ Yii::$app->phpCache->set(
 Since version 1.1 you can also pass a `Closure` instead of a PHP code:
 
 ```php
-use sergeymakinen\caching\ValueWithBootstrap;
+use sergeymakinen\yii\phpfilecache\ValueWithBootstrap;
 use yii\helpers\StringHelper;
 
 Yii::$app->phpCache->set(

@@ -1,6 +1,6 @@
 <?php
 
-namespace sergeymakinen\tests\caching\stubs;
+namespace sergeymakinen\yii\phpfilecache\tests\stubs;
 
 use yii\base\Model;
 

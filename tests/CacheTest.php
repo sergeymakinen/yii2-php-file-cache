@@ -1,14 +1,14 @@
 <?php
 
-namespace sergeymakinen\tests\caching;
+namespace sergeymakinen\yii\phpfilecache\tests;
 
-use sergeymakinen\caching\ValueWithBootstrap;
-use sergeymakinen\tests\caching\stubs\TestClosureInNamespace;
-use sergeymakinen\tests\caching\stubs\TestModel;
+use sergeymakinen\yii\phpfilecache\tests\stubs\TestClosureInNamespace;
+use sergeymakinen\yii\phpfilecache\tests\stubs\TestModel;
+use sergeymakinen\yii\phpfilecache\ValueWithBootstrap;
 use yii\caching\ExpressionDependency;
 use yii\helpers\FileHelper;
 
-class PhpFileCacheTest extends TestCase
+class CacheTest extends TestCase
 {
     public static $external;
 
@@ -90,7 +90,7 @@ class PhpFileCacheTest extends TestCase
         $this->assertTrue($cache->flush());
         self::$external = null;
         $cache->set('foo', new ValueWithBootstrap($value, function () {
-            PhpFileCacheTest::$external = 'foobar';
+            CacheTest::$external = 'foobar';
         }));
         $this->assertNull(self::$external);
         $this->assertEquals($value, $cache->get('foo'));
@@ -116,11 +116,11 @@ class PhpFileCacheTest extends TestCase
     public function testExtractClosureNamespaces()
     {
         $expected = [
-            'namespace' => 'sergeymakinen\tests\caching',
+            'namespace' => 'sergeymakinen\yii\phpfilecache\tests',
             'uses' => [
-                'sergeymakinen\caching\ValueWithBootstrap',
-                'sergeymakinen\tests\caching\stubs\TestClosureInNamespace',
-                'sergeymakinen\tests\caching\stubs\TestModel',
+                'sergeymakinen\yii\phpfilecache\tests\stubs\TestClosureInNamespace',
+                'sergeymakinen\yii\phpfilecache\tests\stubs\TestModel',
+                'sergeymakinen\yii\phpfilecache\ValueWithBootstrap',
                 'yii\caching\ExpressionDependency',
                 'yii\helpers\FileHelper',
             ],
@@ -129,9 +129,9 @@ class PhpFileCacheTest extends TestCase
         }]));
 
         $expected = [
-            'namespace' => 'sergeymakinen\tests\caching\stubs',
+            'namespace' => 'sergeymakinen\yii\phpfilecache\tests\stubs',
             'uses' => [
-                'Alias' => 'sergeymakinen\tests\caching\PhpFileCacheTest',
+                'Alias' => 'sergeymakinen\yii\phpfilecache\tests\CacheTest',
                 'yii\helpers\StringHelper',
                 'yii\helpers\ArrayHelper',
                 'yii\helpers\VarDumper',

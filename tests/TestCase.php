@@ -1,17 +1,17 @@
 <?php
 
-namespace sergeymakinen\tests\caching;
+namespace sergeymakinen\yii\phpfilecache\tests;
 
-use sergeymakinen\caching\PhpFileCache;
+use sergeymakinen\yii\phpfilecache\Cache;
 use yii\helpers\ArrayHelper;
 
-abstract class TestCase extends \sergeymakinen\tests\TestCase
+abstract class TestCase extends \sergeymakinen\yii\tests\TestCase
 {
     protected function createCache(array $config = [])
     {
         $config = ArrayHelper::merge([
             'cachePath' => '@tests/runtime/cache',
         ], $config);
-        return new PhpFileCache($config);
+        return new Cache($config);
     }
 }

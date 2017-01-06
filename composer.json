@@ -18,20 +18,19 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "yiisoft/yii2": "~2.0.1"
+        "yiisoft/yii2": "~2.0.7"
     },
     "require-dev": {
-        "sergeymakinen/yii2-tests": "^1.0"
+        "sergeymakinen/yii2-tests": "^2.0"
     },
     "autoload": {
-        "classmap": [
-            "src/PhpFileCache.php",
-            "src/ValueWithBootstrap.php"
-        ]
+        "psr-4": {
+            "sergeymakinen\\yii\\phpfilecache\\": "src"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "sergeymakinen\\tests\\caching\\": "tests"
+            "sergeymakinen\\yii\\phpfilecache\\tests\\": "tests"
         }
     }
 }

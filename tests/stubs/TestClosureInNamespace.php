@@ -1,8 +1,8 @@
 <?php
 
-namespace sergeymakinen\tests\caching\stubs\none {
+namespace sergeymakinen\yii\phpfilecache\tests\stubs\none {
 
-    use sergeymakinen\tests\caching\PhpFileCacheTest as Alias;
+    use sergeymakinen\yii\phpfilecache\tests\CacheTest as Alias;
 
     class TestClosureInNamespace
     {
@@ -16,9 +16,9 @@ namespace sergeymakinen\tests\caching\stubs\none {
     }
 }
 
-namespace sergeymakinen\tests\caching\stubs {
+namespace sergeymakinen\yii\phpfilecache\tests\stubs {
 
-    use sergeymakinen\tests\caching\PhpFileCacheTest as Alias,
+    use sergeymakinen\yii\phpfilecache\tests\CacheTest as Alias,
         yii\helpers\StringHelper;
 
     use yii\helpers\ArrayHelper,

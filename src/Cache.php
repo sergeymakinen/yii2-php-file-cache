@@ -1,21 +1,21 @@
 <?php
 /**
- * Yii 2 PHP file cache.
+ * Yii 2 PHP file cache
  *
  * @see       https://github.com/sergeymakinen/yii2-php-file-cache
  * @copyright Copyright (c) 2016-2017 Sergey Makinen (https://makinen.ru)
  * @license   https://github.com/sergeymakinen/yii2-php-file-cache/blob/master/LICENSE MIT License
  */
 
-namespace sergeymakinen\caching;
+namespace sergeymakinen\yii\phpfilecache;
 
 use yii\caching\FileCache;
 use yii\helpers\VarDumper;
 
 /**
- * PhpFileCache implements a cache component using PHP files.
+ * Cache implements a cache component using PHP files.
  */
-class PhpFileCache extends FileCache
+class Cache extends FileCache
 {
     /**
      * @inheritDoc
