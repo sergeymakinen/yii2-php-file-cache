@@ -3,18 +3,18 @@
  * Yii 2 PHP file cache
  *
  * @see       https://github.com/sergeymakinen/yii2-php-file-cache
- * @copyright Copyright (c) 2016-2017 Sergey Makinen (https://makinen.ru)
+ * @copyright Copyright (c) 2016-2018 Sergey Makinen (https://makinen.ru)
  * @license   https://github.com/sergeymakinen/yii2-php-file-cache/blob/master/LICENSE MIT License
  */
 
 namespace sergeymakinen\yii\phpfilecache;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Allows caching a value along with a PHP code in [[Cache]].
  */
-class ValueWithBootstrap extends Object
+class ValueWithBootstrap extends BaseObject
 {
     /**
      * @var string|\Closure the PHP code represented by this object.
