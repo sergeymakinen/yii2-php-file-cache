@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "54b6d25067ce62caca37cde26599f61f",
+    "content-hash": "f648c5a9f30aaa1a51fcd8280834fa3d",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -1710,21 +1710,22 @@
         },
         {
             "name": "sergeymakinen/tests",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sergeymakinen/tests.git",
-                "reference": "c04c6d0bf7bc3f490a3cc8f4c017d6b76e3c9afd"
+                "reference": "6ad901d0caaa76cd1d891e10c1218654c0178bed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sergeymakinen/tests/zipball/c04c6d0bf7bc3f490a3cc8f4c017d6b76e3c9afd",
-                "reference": "c04c6d0bf7bc3f490a3cc8f4c017d6b76e3c9afd",
+                "url": "https://api.github.com/repos/sergeymakinen/tests/zipball/6ad901d0caaa76cd1d891e10c1218654c0178bed",
+                "reference": "6ad901d0caaa76cd1d891e10c1218654c0178bed",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.4 || ^7.0",
                 "phpunit/phpunit": "^4.8.25 || ^5.4.3 || ^6.0.5 || ^7.0",
+                "sebastian/comparator": "^1.2.3 || ^2.0",
                 "symfony/var-dumper": "^2.8 || ^3.0 || ^4.0"
             },
             "type": "library",
@@ -1752,24 +1753,24 @@
                 "tests",
                 "unit"
             ],
-            "time": "2018-02-12T13:36:38+00:00"
+            "time": "2018-02-12T18:13:04+00:00"
         },
         {
             "name": "sergeymakinen/yii2-tests",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sergeymakinen/yii2-tests.git",
-                "reference": "bfd107e2d851f9bd1a743ab40861422dd61f2228"
+                "reference": "c8923f809ff77b2627cfa579f57323fef0ba31fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sergeymakinen/yii2-tests/zipball/bfd107e2d851f9bd1a743ab40861422dd61f2228",
-                "reference": "bfd107e2d851f9bd1a743ab40861422dd61f2228",
+                "url": "https://api.github.com/repos/sergeymakinen/yii2-tests/zipball/c8923f809ff77b2627cfa579f57323fef0ba31fa",
+                "reference": "c8923f809ff77b2627cfa579f57323fef0ba31fa",
                 "shasum": ""
             },
             "require": {
-                "sergeymakinen/tests": "^1.3",
+                "sergeymakinen/tests": "^1.3.1",
                 "yiisoft/yii2": "~2.0.13"
             },
             "type": "library",
@@ -1798,7 +1799,7 @@
                 "yii2",
                 "yii2-tests"
             ],
-            "time": "2018-02-12T14:11:17+00:00"
+            "time": "2018-02-12T18:19:50+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

@@ -21,7 +21,7 @@
         "yiisoft/yii2": "~2.0.13"
     },
     "require-dev": {
-        "sergeymakinen/yii2-tests": "^2.2"
+        "sergeymakinen/yii2-tests": "^2.2.1"
     },
     "autoload": {
         "psr-4": {
